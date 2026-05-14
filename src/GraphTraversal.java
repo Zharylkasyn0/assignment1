@@ -13,7 +13,7 @@ class Edge1 {
 
 public class GraphTraversal {
 
-    Map<String, List<Edge>> graph = new HashMap<>();
+    Map<String, List<Edge1>> graph = new HashMap<>();
 
     void addVertex(String v) {
         graph.putIfAbsent(v, new ArrayList<>());
@@ -21,8 +21,8 @@ public class GraphTraversal {
 
     void addEdge(String v, String w, int weight) {
 
-        graph.get(v).add(new Edge(w, weight));
-        graph.get(w).add(new Edge(v, weight));
+        graph.get(v).add(new Edge1(w, weight));
+        graph.get(w).add(new Edge1(v, weight));
     }
 
     void dfs(String start, Set<String> visited) {
@@ -31,7 +31,7 @@ public class GraphTraversal {
 
         System.out.print(start + " ");
 
-        for (Edge e : graph.get(start)) {
+        for (Edge1 e : graph.get(start)) {
 
             if (!visited.contains(e.to))
                 dfs(e.to, visited);
@@ -52,7 +52,7 @@ public class GraphTraversal {
 
             System.out.print(cur + " ");
 
-            for (Edge e : graph.get(cur)) {
+            for (Edge1 e : graph.get(cur)) {
 
                 if (!visited.contains(e.to)) {
 

@@ -28,7 +28,7 @@ class Node implements Comparable<Node> {
 
 public class DijkstraGraph {
 
-    Map<String, List<Edge>> graph = new HashMap<>();
+    Map<String, List<Edge2>> graph = new HashMap<>();
 
     void addVertex(String v) {
         graph.putIfAbsent(v, new ArrayList<>());
@@ -36,8 +36,8 @@ public class DijkstraGraph {
 
     void addEdge(String v, String w, int weight) {
 
-        graph.get(v).add(new Edge(w, weight));
-        graph.get(w).add(new Edge(v, weight));
+        graph.get(v).add(new Edge2(w, weight));
+        graph.get(w).add(new Edge2(v, weight));
     }
 
     void dijkstra(String start) {
@@ -58,7 +58,7 @@ public class DijkstraGraph {
 
             Node cur = pq.poll();
 
-            for (Edge e : graph.get(cur.vertex)) {
+            for (Edge2 e : graph.get(cur.vertex)) {
 
                 int newDist = dist.get(cur.vertex) + e.weight;
 
