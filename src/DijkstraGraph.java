@@ -1,10 +1,11 @@
 import java.util.*;
 
-class Edge {
+class Edge2 {
+
     String to;
     int weight;
 
-    Edge(String to, int weight) {
+    Edge2(String to, int weight) {
         this.to = to;
         this.weight = weight;
     }
@@ -34,6 +35,7 @@ public class DijkstraGraph {
     }
 
     void addEdge(String v, String w, int weight) {
+
         graph.get(v).add(new Edge(w, weight));
         graph.get(w).add(new Edge(v, weight));
     }
@@ -49,6 +51,7 @@ public class DijkstraGraph {
         dist.put(start, 0);
 
         PriorityQueue<Node> pq = new PriorityQueue<>();
+
         pq.add(new Node(start, 0));
 
         while (!pq.isEmpty()) {
@@ -71,11 +74,11 @@ public class DijkstraGraph {
 
         for (String v : dist.keySet()) {
 
-            System.out.print("Path to " + v + ": ");
+            System.out.print(v + " Distance = " + dist.get(v) + " Path = ");
 
             printPath(prev, v);
 
-            System.out.println(" | Distance = " + dist.get(v));
+            System.out.println();
         }
     }
 
@@ -95,12 +98,17 @@ public class DijkstraGraph {
         g.addVertex("B");
         g.addVertex("C");
         g.addVertex("D");
+        g.addVertex("E");
+        g.addVertex("F");
 
-        g.addEdge("A", "B", 4);
-        g.addEdge("A", "C", 2);
-        g.addEdge("B", "D", 5);
-        g.addEdge("C", "D", 1);
+        g.addEdge("B", "A", 11);
+        g.addEdge("C", "B", 5);
+        g.addEdge("D", "A", 11);
+        g.addEdge("E", "D", 8);
+        g.addEdge("F", "C", 13);
+        g.addEdge("A", "E", 12);
+        g.addEdge("F", "E", 3);
 
-        g.dijkstra("A");
+        g.dijkstra("B");
     }
 }

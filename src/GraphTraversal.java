@@ -1,10 +1,11 @@
 import java.util.*;
 
-class Edge2 {
+class Edge1 {
+
     String to;
     int weight;
 
-    Edge2(String to, int weight) {
+    Edge1(String to, int weight) {
         this.to = to;
         this.weight = weight;
     }
@@ -19,6 +20,7 @@ public class GraphTraversal {
     }
 
     void addEdge(String v, String w, int weight) {
+
         graph.get(v).add(new Edge(w, weight));
         graph.get(w).add(new Edge(v, weight));
     }
@@ -69,16 +71,21 @@ public class GraphTraversal {
         g.addVertex("B");
         g.addVertex("C");
         g.addVertex("D");
+        g.addVertex("E");
+        g.addVertex("F");
 
-        g.addEdge("A", "B", 4);
-        g.addEdge("A", "C", 2);
-        g.addEdge("B", "D", 5);
-        g.addEdge("C", "D", 1);
+        g.addEdge("B", "A", 11);
+        g.addEdge("C", "B", 5);
+        g.addEdge("D", "A", 11);
+        g.addEdge("E", "D", 8);
+        g.addEdge("F", "C", 13);
+        g.addEdge("A", "E", 12);
+        g.addEdge("F", "E", 3);
 
         System.out.println("DFS:");
-        g.dfs("A", new HashSet<>());
+        g.dfs("C", new HashSet<>());
 
         System.out.println("\nBFS:");
-        g.bfs("A");
+        g.bfs("C");
     }
 }
